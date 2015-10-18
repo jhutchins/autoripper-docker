@@ -24,3 +24,6 @@ RUN wget http://www.makemkv.com/download/makemkv-bin-1.9.7.tar.gz \
     && make install \
     && ../makemkv-bin \
     && make install
+
+RUN pip install tendo pyyaml peewee
+
