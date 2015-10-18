@@ -1,6 +1,15 @@
 FROM ubuntu:14.04
 
-RUN add-apt-repository ppa:stebbins/handbrake-releases \
+RUN echo 'deb http://ppa.launchpad.net/stebbins/handbrake-releases/ubuntu trusty main' >> /etc/apt/sources.list \
+    && gpg \
+        --ignore-time-conflict \
+        --no-option \
+        --no-default-keyring \
+        --secret-keyring /etc/apt/secring.gpg \
+        --trustdb-name /etc/apt/trustdb.gpg \
+        --keyring /etc/apt/trusted.gpg \
+        --keyserver keyserver.ubuntu.com \
+        --recv 43D3A9F60C58A7169778E6FB8771ADB0816950D8 \
     && apt-get update \
     && apt-get install -y \
         build-essential \ 
