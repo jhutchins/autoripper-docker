@@ -27,12 +27,15 @@ RUN echo 'deb http://ppa.launchpad.net/stebbins/handbrake-releases/ubuntu trusty
     && rm -rf /var/lib/apt/lists/*
 
 RUN wget http://www.makemkv.com/download/makemkv-bin-1.9.7.tar.gz \
-    && curl http://www.makemkv.com/download/makemkv-oss-1.9.7.tar.gz \
-    && tar -zxvf makemkv * \
-    && cd makemkv-oss \
+    && wget http://www.makemkv.com/download/makemkv-oss-1.9.7.tar.gz \
+    && tar -zxvf makemkv-bin-1.9.7.tar.gz \
+    && tar -zxvf makemkv-oss-1.9.7.tar.gz \
+    && cd makemkv-oss-1.9.7 \
     && ./configure \
     && make install \
-    && ../makemkv-bin \
+    && cd ../makemkv-bin-1.9.7 \
+    && mkdir -p tmp \
+    && echo 'yes' > tmp/eula_accepted \
     && make install
 
 RUN pip install tendo pyyaml peewee
