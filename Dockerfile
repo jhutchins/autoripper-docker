@@ -3,7 +3,6 @@ FROM ubuntu:14.04
 RUN add-apt-repository ppa:stebbins/handbrake-releases \
     && apt-get update \
     && apt-get install -y \
-        curl \
         build-essential \ 
         handbrake-cli \
         pkg-config \
@@ -13,10 +12,11 @@ RUN add-apt-repository ppa:stebbins/handbrake-releases \
         libexpat1-dev \
         libavcodec-dev \
         libgl1-mesa-dev \
-        libqt4-dev
+        libqt4-dev \
+        wget \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl http://www.makemkv.com/download/makemkv-bin-1.9.7.tar.gz \
+RUN wget http://www.makemkv.com/download/makemkv-bin-1.9.7.tar.gz \
     && curl http://www.makemkv.com/download/makemkv-oss-1.9.7.tar.gz \
     && tar -zxvf makemkv * \
     && cd makemkv-oss \
