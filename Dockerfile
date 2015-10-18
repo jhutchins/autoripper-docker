@@ -42,3 +42,12 @@ RUN pip install tendo pyyaml peewee
 
 RUN wget http://skylineservers.dl.sourceforge.net/project/filebot/filebot/FileBot_4.6/filebot_4.6_amd64.deb \
     && dpkg -i filebot_4.6_amd64.deb
+
+RUN git clone https://github.com/JasonMillward/Autorippr.git \
+    && cd Autorippr \
+    && git checkout v1.6.3 \
+    && cp settings.example.cfg settings.cfg
+
+RUN echo "*/5     *       *       *       *       python /Autorippr/autorippr.py --all --debug" > /etc/cron.d/autoripper
+
+CMD ["/usr/sbin/cron", "-f", "-L", "15"]
