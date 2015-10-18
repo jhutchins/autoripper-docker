@@ -1,9 +1,11 @@
 FROM ubuntu:14.04
 
-RUN apt-get update \
+RUN add-apt-repository ppa:stebbins/handbrake-releases \
+    && apt-get update \
     && apt-get install -y \
         curl \
         build-essential \ 
+        handbrake-cli \
         pkg-config \
         python-pip \
         libc6-dev \
