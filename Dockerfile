@@ -48,6 +48,6 @@ RUN git clone https://github.com/JasonMillward/Autorippr.git \
     && git checkout v1.6.3 \
     && cp settings.example.cfg settings.cfg
 
-RUN echo "*/5     *       *       *       *       python /Autorippr/autorippr.py --all --debug" > /etc/cron.d/autoripper
+RUN echo -e "*/5     *       *       *       *       python /Autorippr/autorippr.py --all --debug\n" > /var/spool/cron/crontabs/root
 
 CMD ["/usr/sbin/cron", "-f", "-L", "15"]
