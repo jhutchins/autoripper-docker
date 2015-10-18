@@ -40,3 +40,5 @@ RUN wget http://www.makemkv.com/download/makemkv-bin-1.9.7.tar.gz \
 
 RUN pip install tendo pyyaml peewee
 
+RUN wget http://skylineservers.dl.sourceforge.net/project/filebot/filebot/FileBot_4.6/filebot_4.6_amd64.deb \
+    && dpkg -i filebot_4.6_amd64.deb
