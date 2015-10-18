@@ -13,6 +13,7 @@ RUN echo 'deb http://ppa.launchpad.net/stebbins/handbrake-releases/ubuntu trusty
     && apt-get update \
     && apt-get install -y \
         build-essential \ 
+        git \
         handbrake-cli \
         pkg-config \
         python-pip \
